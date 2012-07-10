@@ -5,4 +5,7 @@ x-dropdown ul {
     display: none;
 }
 
+x-dropdown ul li :hover:first-child{
+    background-color:#D0D0D0;
+}
 
