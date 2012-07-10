@@ -23,13 +23,12 @@ xtag.register('x-dropdown', {
     },
     methods: {
         openMenu: function(){
-//            var menu = xtag.query(document, 'body > x-dropdown > ul')[0];
             var menu = this.getElementsByTagName('ul')[0];
             menu.setAttribute("class", "x-dropdown-open");
 
             var header = this.getElementsByTagName('a')[0];
             header.setAttribute("data-action-type", "closeMenu");
-            // activate next toggler
+
         },
         closeMenu: function(){
             var menu = this.getElementsByTagName('ul')[0];
@@ -37,7 +36,7 @@ xtag.register('x-dropdown', {
 
             var header = this.getElementsByTagName('a')[0];
             header.setAttribute("data-action-type", "openMenu");
-            // activate the previous toggler
+
         }
     }
 });
