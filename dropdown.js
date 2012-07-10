@@ -33,7 +33,7 @@ xtag.register('x-dropdown', {
         },
         closeMenu: function(){
             var menu = this.getElementsByTagName('ul')[0];
-            menu.setAttribute("class", "x-dropdown-close");
+            menu.setAttribute("class", "");
 
             var header = this.getElementsByTagName('a')[0];
             header.setAttribute("data-action-type", "openMenu");
