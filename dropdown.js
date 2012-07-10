@@ -1,7 +1,7 @@
 
 xtag.register('x-dropdown', {
     onCreate: function(){
-            alert("waz up?");
+//            alert("waz up?");
     },
     onInsert: function(){
         // fired each time a component 
@@ -22,10 +22,21 @@ xtag.register('x-dropdown', {
         // Add DOM object setters
     },
     methods: {
-        nextToggler: function(){
+        openMenu: function(){
+//            var menu = xtag.query(document, 'body > x-dropdown > ul')[0];
+            var menu = this.getElementsByTagName('ul')[0];
+            menu.setAttribute("class", "x-dropdown-open");
+
+            var header = this.getElementsByTagName('a')[0];
+            header.setAttribute("data-action-type", "closeMenu");
             // activate next toggler
         },
-        previousToggler: function(){
+        closeMenu: function(){
+            var menu = this.getElementsByTagName('ul')[0];
+            menu.setAttribute("class", "x-dropdown-close");
+
+            var header = this.getElementsByTagName('a')[0];
+            header.setAttribute("data-action-type", "openMenu");
             // activate the previous toggler
         }
     }

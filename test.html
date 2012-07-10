@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title>X-Tag - a cross-browser web components library</title>
+		<title>ben!</title>
 		
 		
 		<link rel="stylesheet" type="text/css" href="dropdown.css"/>
@@ -14,20 +14,42 @@
 
 <body>
 
-<x-dropdown  data-flyout-position="bottom">
-  <ul>
-    <li>
-      <a href="#">[show menu]</a>
-      <ul>
+<x-dropdown id="x-dropdown">
+    <a href="#" data-action-type="openMenu">[show menu]</a>
+    <ul>
+        <x-dropdown id="x-dropdown-sub">
+            <a href="#" data-action-type="openMenu">[show menu]</a>
+            <ul>
+                <li>Log out</li>
+                <li>Preferences</li>
+                <li>Change password</li>
+            </ul>
+        </x-dropdown>
         <li>Log out</li>
         <li>Preferences</li>
         <li>Change password</li>
-      </ul>
-    </li>
-  </ul>
+    </ul>
 </x-dropdown>
 
 </body>
 
-
+<script type="text/javascript">
+    document.addEventListener('click', function(e){
+        var action = e.target,
+            parent = action.parentNode,
+            actionType = action.getAttribute('data-action-type');
+        if (actionType) {
+            var tag = action.parentElement.id,
+                demo = document.getElementById(tag);
+            switch(actionType) {
+                case 'openMenu':
+                    demo.xtag.openMenu();
+                    break;
+                case 'closeMenu':
+                    demo.xtag.closeMenu();
+                    break;
+            }
+        }
+});
+</script>
 </html>
