@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="dropdown.js"></script>		
 	</head>
 
-<body>
+<body data-action-type="closeMenuBody">
 
 <x-dropdown id="x-dropdown">
     <a href="#" data-action-type="openMenu">[show menu]</a>
@@ -36,9 +36,11 @@
 
 <script type="text/javascript">
     document.addEventListener('click', function(e){
+
         var action = e.target,
             parent = action.parentNode,
             actionType = action.getAttribute('data-action-type');
+
         if (actionType) {
             var tag = action.parentElement.id,
                 demo = document.getElementById(tag);
@@ -49,6 +51,9 @@
                 case 'closeMenu':
                     demo.xtag.closeMenu();
                     break;
+                case 'closeMenuBody':
+                    demo = document.getElementsByTagName('x-dropdown')[0];
+                    demo.xtag.closeMenuBody();
             }
         }
 });
