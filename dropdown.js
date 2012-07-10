@@ -43,6 +43,14 @@ xtag.register('x-dropdown', {
             var header = this.getElementsByTagName('a')[0];
             header.setAttribute("data-action-type", "openMenu");
             // activate the previous toggler
+        },
+        closeMenuBody: function(){
+            var submenus = this.parentNode.parentNode.getElementsByTagName('x-dropdown');
+            for (var i = 0; i < submenus.length; i++) {
+                var x = submenus[i].getElementsByTagName('ul')[0].setAttribute("class", "");
+                var header = submenus[i].getElementsByTagName('a')[0];
+                header.setAttribute("data-action-type", "openMenu");
+            }
         }
     }
 });
