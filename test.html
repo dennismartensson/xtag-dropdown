@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>xtag-dropdown (& ben)</title>
+        <title>xtag-dropdown</title>
         
         
         <link rel="stylesheet" type="text/css" href="dropdown.css"/>
@@ -14,46 +14,83 @@
     </head>
 
 <body data-action-type="closeMenuBody">
-
 <x-dropdown id="x-dropdown">
     <a href="#" data-action-type="openMenu">[show menu]</a>
     <ul>
         <li><a>toplev - 1</a></li>
         <li><a>toplev - 2</a></li>
         <li>
-            <x-dropdown id="x-dropdown-sub-1">
+            <x-dropdown id="x-dropdown-sub-1" data-orgentation="right">
                 <a href="#" data-action-type="openMenu">[submenu - 1]</a>
                 <ul>
-                    <li><div>2nd lev - 1</div></li>
+                    <li><a>2nd lev - 1</a></li>
                     <li><a>2nd lev - 2</a></li>
-                    <li><p>2nd lev - 3</p></li>
+                    <li><a>2nd lev - 3</a></li>
                 </ul>
             </x-dropdown>
         </li>
         <li>
-            <x-dropdown id="x-dropdown-sub-2">
+            <x-dropdown id="x-dropdown-sub-2" data-orgentation="right">
                 <a href="#" data-action-type="openMenu">[submenu - 2]</a>
                 <ul>
-                    <li>2nd lev - 1</li>
+                    <li><a>2nd lev - 1</a></li>
                     <li>
-                        <x-dropdown id="x-dropdown-sub-3">
+                        <x-dropdown id="x-dropdown-sub-3" data-orgentation="right">
                             <a href="#" data-action-type="openMenu">[submenu - 3]</a>
                             <ul>
-                                <li>3rd lev - 1</li>
-                                <li>3rd lev - 2</li>
-                                <li>3rd lev - 3</li>
+                                <li><a>3rd lev - 1</a></li>
+                                <li><a>3rd lev - 2</a></li>
+                                <li><a>3rd lev - 3</a></li>
                             </ul>
                         </x-dropdown>
                     </li>
-                    <li>2nd lev - 2</li>
-                    <li>2nd lev - 3</li>
+                    <li><a>2nd lev - 2</a></li>
+                    <li><a>2nd lev - 3</a></li>
                 </ul>
             </x-dropdown>
         </li>
-        <li>toplev - 4</li>
+        <li><a>toplev - 4</a></li>
     </ul>
 </x-dropdown>
 
+<x-dropdown id="x-dropdown1">
+    <a href="#" data-action-type="openMenu">[show menu]</a>
+    <ul>
+        <li><a>toplev - 1</a></li>
+        <li><a>toplev - 2</a></li>
+        <li>
+            <x-dropdown id="x-dropdown-sub-11" data-orgentation="right">
+                <a href="#" data-action-type="openMenu">[submenu - 1]</a>
+                <ul>
+                    <li><a>2nd lev - 1</a></li>
+                    <li><a>2nd lev - 2</a></li>
+                    <li><a>2nd lev - 3</a></li>
+                </ul>
+            </x-dropdown>
+        </li>
+        <li>
+            <x-dropdown id="x-dropdown-sub-21" data-orgentation="right">
+                <a href="#" data-action-type="openMenu">[submenu - 2]</a>
+                <ul>
+                    <li><a>2nd lev - 1</a></li>
+                    <li>
+                        <x-dropdown id="x-dropdown-sub-31" data-orgentation="right">
+                            <a href="#" data-action-type="openMenu">[submenu - 3]</a>
+                            <ul>
+                                <li><a>3rd lev - 1</a></li>
+                                <li><a>3rd lev - 2</a></li>
+                                <li><a>3rd lev - 3</a></li>
+                            </ul>
+                        </x-dropdown>
+                    </li>
+                    <li><a>2nd lev - 2</a></li>
+                    <li><a>2nd lev - 3</a></li>
+                </ul>
+            </x-dropdown>
+        </li>
+        <li><a>toplev - 4</a></li>
+    </ul>
+</x-dropdown>
 </body>
 
 <script type="text/javascript">
