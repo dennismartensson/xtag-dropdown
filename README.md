@@ -6,7 +6,7 @@ This is a dropdown menu element, It is build to be esay to use and flexible.
 Example:
 
 <code>
-    
+
 <x-dropdown id="x-dropdown" data-width="150">
     <ul>
         <li><a href="#" data-action-type="openMenu">[show menu]</a>
@@ -28,6 +28,6 @@ Example:
     </ul>
 </x-dropdown>
 
-</code>
+<code>
 
 
