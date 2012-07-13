@@ -87,6 +87,14 @@ xtag.register('x-dropdown', {
     },
     methods: {
         openMenu: function(link) {
+            var submenus = link.parentNode.getElementsByTagName('ul');
+
+            for (var i = 0; i < submenus.length; i++) {
+                if (submenus[i].getAttribute("selected") == "true") {
+                    submenus[i].setAttribute("selected",false); 
+                    submenus[i].parentNode.getElementsByTagName('a')[0].setAttribute("data-action-type","openMenu");
+                }
+            }
 
             var menu = link.parentNode.getElementsByTagName('ul')[0];
 
