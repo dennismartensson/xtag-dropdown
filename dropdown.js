@@ -1,39 +1,59 @@
 xtag.register('x-dropdown', {
     onCreate: function() {
-        
-    },
-
-    onInsert: function() {
-
+        //Set width of menu
         var width = this.getAttribute('data-width');
 
         if (typeof window.innerWidth != 'undefined') {
             var viewportwidth = window.innerWidth;
 
-            if(width >= viewportwidth){
+            if (width >= viewportwidth) {
                 width = viewportwidth * 0.8;
             }
         }
 
         this.getElementsByTagName('ul')[0].style.maxWidth = width + 'px';
 
-        xtag.query(document, 'ul').forEach(function(element){
+        //set orgentation and distance
+        xtag.query(document, 'ul').forEach(function(element) {
             var orgen = element.getAttribute('orgentation');
             var distance = element.getAttribute('distance');
 
-            if(orgen == 'right'){
-                element.style.paddingLeft= distance + 'px';
-            }else if(orgen == 'left'){
-                element.style.paddingRight= distance + 'px';
-            }else if(orgen == 'top'){
-                element.style.paddingBottom= distance + 'px';
+            if (orgen == 'right') {
+                element.style.paddingLeft = distance + 'px';
+            } else if (orgen == 'left') {
+                element.style.paddingRight = distance + 'px';
+            } else if (orgen == 'top') {
+                element.style.paddingBottom = distance + 'px';
             }
         });
+    },
 
+    onInsert: function() {
+        //add click lisener to body for closing menu if you click on any thing else then the menu
+        document.body.setAttribute('data-action-type', 'closeMenuAll');
+
+        document.addEventListener('click', function(e) {
+
+            var action = e.target,
+                parent = action.parentNode,
+                actionType = action.getAttribute('data-action-type');
+
+            if (actionType) {
+
+                switch (actionType) {
+
+                case 'closeMenuAll':
+                    document.getElementsByTagName('x-dropdown')[0].xtag.closeMenuAll();
+                    break;
+                }
+
+            }
+        });
     },
 
     events: {
-        'tap:delegate(a)': function(e) {
+        //hade problems with a and tap on ios and links? Known problem?
+        'click:delegate(a)': function(e) {
             actionType = this.getAttribute('data-action-type');
 
             if (actionType) {
@@ -54,17 +74,14 @@ xtag.register('x-dropdown', {
                     break;
                 }
             }
-        },
-        'tap:delegate(body)': function() {
-            alert("body");
         }
     },
 
     getters: {
-        
+
     },
     setters: {
-        
+
     },
     methods: {
         openMenu: function(link) {
@@ -87,19 +104,24 @@ xtag.register('x-dropdown', {
             menu.setAttribute('selected', false);
 
             link.setAttribute("data-action-type", "openMenu");
-
         },
 
-        closeMenuBody: function() {
-            var submenus = this.parentNode.parentNode.getElementsByTagName('x-dropdown');
-            for (var i = 0; i < submenus.length; i++) {
+        closeMenuAll: function() {
 
-                var x = submenus[i].getElementsByTagName('ul')[0]
-                x.setAttribute('selected', false);
+            xtag.query(document, 'x-dropdown').forEach(function(dropdown) {
+                
+                var list = dropdown.getElementsByTagName('ul')[0].getElementsByTagName('li')[0];
+                var link = list.getElementsByTagName('a')[0];
+                var menu = list.getElementsByTagName('ul')[0];
 
-                var header = submenus[i].getElementsByTagName('a')[0];
-                header.setAttribute("data-action-type", "openMenu");
-            }
+                if (menu.getAttribute('selected') == 'true') {
+                    menu.setAttribute('selected', false);
+                }
+
+                if (link.getAttribute('data-action-type') == 'closeMenu') {
+                    link.setAttribute('data-action-type', 'openMenu');
+                }
+            });
         }
     }
 });

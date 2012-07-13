@@ -1,11 +1,11 @@
-x-dropdown ul li ul{
-	overflow:scroll;
+x-dropdown > ul{
+	overflow:auto;
 }
 
-x-dropdown ul li ul[selected="false"] {
+x-dropdown ul[selected="false"] {
     display: none;
 }
 
-x-dropdown ul li ul[selected="true"] {
+x-dropdown ul[selected="true"] {
 	display: block;
 }
