@@ -9,18 +9,3 @@ x-dropdown ul li ul[selected="false"] {
 x-dropdown ul li ul[selected="true"] {
 	display: block;
 }
-
-x-dropdown ul[orgentation="right"] {
-	padding: 0px;
-	padding-left: 100px;
-}
-
-x-dropdown ul[orgentation="left"] {
-	padding: 0px;
-	padding-right: 100px;
-}
-
-x-dropdown ul[orgentation="top"] {
-	padding: 0px;
-	padding-bottom: 100px;
-}

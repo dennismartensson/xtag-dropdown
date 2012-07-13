@@ -2,11 +2,10 @@ xtag.register('x-dropdown', {
     onCreate: function() {
         
     },
-    
+
     onInsert: function() {
 
         var width = this.getAttribute('data-width');
-        var orgentation = this.getAttribute('data-orgentation');
 
         if (typeof window.innerWidth != 'undefined') {
             var viewportwidth = window.innerWidth;
@@ -17,6 +16,19 @@ xtag.register('x-dropdown', {
         }
 
         this.getElementsByTagName('ul')[0].style.maxWidth = width + 'px';
+
+        xtag.query(document, 'ul').forEach(function(element){
+            var orgen = element.getAttribute('orgentation');
+            var distance = element.getAttribute('distance');
+
+            if(orgen == 'right'){
+                element.style.paddingLeft= distance + 'px';
+            }else if(orgen == 'left'){
+                element.style.paddingRight= distance + 'px';
+            }else if(orgen == 'top'){
+                element.style.paddingBottom= distance + 'px';
+            }
+        });
 
     },
 
@@ -52,7 +64,7 @@ xtag.register('x-dropdown', {
         
     },
     setters: {
-        // Add DOM object setters
+        
     },
     methods: {
         openMenu: function(link) {
