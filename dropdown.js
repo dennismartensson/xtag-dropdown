@@ -1,20 +1,53 @@
-
 xtag.register('x-dropdown', {
-    onCreate: function(){
-
+    onCreate: function() {
+        
     },
-    onInsert: function(){
-        // fired each time a component 
-        // is inserted into the DOM
+    onInsert: function() {
+
+        var width = this.getAttribute('data-width');
+        var orgentation = this.getAttribute('data-orgentation');
+
+        if (typeof window.innerWidth != 'undefined') {
+            var viewportwidth = window.innerWidth;
+
+            if(width >= viewportwidth){
+                width = viewportwidth * 0.8;
+            }
+        }
+
+        this.getElementsByTagName('ul')[0].style.maxWidth = width + 'px';
+
     },
     events: {
-        'click:delegate(x-toggler)': function(){
-            alert("xtog");
-            // activate a clicked toggler
+        'tap:delegate(a)': function(e) {
+            actionType = this.getAttribute('data-action-type');
+
+            if (actionType) {
+
+                var dropdown = this;
+                var tag = '';
+                while (tag.indexOf("X-DROPDOWN") == -1) {
+                    dropdown = dropdown.parentNode;
+                    tag = dropdown.tagName;
+                }
+
+                switch (actionType) {
+                case 'openMenu':
+                    dropdown.xtag.openMenu(this);
+                    break;
+                case 'closeMenu':
+                    dropdown.xtag.closeMenu(this);
+                    break;
+                }
+            }
+        },
+        'tap:delegate(body)': function() {
+            alert("body");
         }
     },
+
     getters: {
-        'togglers': function(){
+        'togglers': function() {
             // return all toggler children
         }
     },
@@ -22,35 +55,32 @@ xtag.register('x-dropdown', {
         // Add DOM object setters
     },
     methods: {
-        openMenu: function(){
-            var submenus = this.parentNode.parentNode.getElementsByTagName('x-dropdown');
-            
-            for (var i = 0; i < submenus.length; i++) {
+        openMenu: function(link) {
 
-                var x = submenus[i].getElementsByTagName('ul')[0];
-                x.setAttribute('selected', false);
+            var menu = link.parentNode.getElementsByTagName('ul')[0];
 
-                var header = submenus[i].getElementsByTagName('a')[0];
-                header.setAttribute("data-action-type", "openMenu");
+            if (typeof window.innerWidth != 'undefined') {
+                var viewportheight = window.innerHeight * 0.8;
+                menu.style.maxHeight = viewportheight + 'px';
             }
 
-            var menu = this.getElementsByTagName('ul')[0];
             menu.setAttribute('selected', true);
 
-            var header = this.getElementsByTagName('a')[0];
-            header.setAttribute("data-action-type", "closeMenu");
-            // activate next toggler
+            link.setAttribute("data-action-type", "closeMenu");
         },
-        closeMenu: function(){
-            var menu = this.getElementsByTagName('ul')[0];
 
+
+        closeMenu: function(link) {
+
+            var menu = link.parentNode.getElementsByTagName('ul')[0];
             menu.setAttribute('selected', false);
 
-            var header = this.getElementsByTagName('a')[0];
-            header.setAttribute("data-action-type", "openMenu");
-            // activate the previous toggler
+            link.setAttribute("data-action-type", "openMenu");
+
         },
-        closeMenuBody: function(){
+
+
+        closeMenuBody: function() {
             var submenus = this.parentNode.parentNode.getElementsByTagName('x-dropdown');
             for (var i = 0; i < submenus.length; i++) {
 
@@ -61,5 +91,6 @@ xtag.register('x-dropdown', {
                 header.setAttribute("data-action-type", "openMenu");
             }
         }
+
     }
 });

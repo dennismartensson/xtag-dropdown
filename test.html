@@ -14,107 +14,44 @@
     </head>
 
 <body data-action-type="closeMenuBody">
-<x-dropdown id="x-dropdown">
-    <a href="#" data-action-type="openMenu">[show menu]</a>
-    <ul>
-        <li><a>toplev - 1</a></li>
-        <li><a>toplev - 2</a></li>
-        <li>
-            <x-dropdown id="x-dropdown-sub-1" data-orgentation="right">
-                <a href="#" data-action-type="openMenu">[submenu - 1]</a>
-                <ul>
-                    <li><a>2nd lev - 1</a></li>
-                    <li><a>2nd lev - 2</a></li>
-                    <li><a>2nd lev - 3</a></li>
-                </ul>
-            </x-dropdown>
-        </li>
-        <li>
-            <x-dropdown id="x-dropdown-sub-2" data-orgentation="right">
-                <a href="#" data-action-type="openMenu">[submenu - 2]</a>
-                <ul>
-                    <li><a>2nd lev - 1</a></li>
-                    <li>
-                        <x-dropdown id="x-dropdown-sub-3" data-orgentation="right">
-                            <a href="#" data-action-type="openMenu">[submenu - 3]</a>
+    <x-dropdown id="x-dropdown" data-width="">
+        <ul>
+            <li><a href="#" data-action-type="openMenu">[show menu]</a>
+                <ul selected="false" orgentation="right">
+                        <li><a>1nd lev - 1</a></li>
+                        <li><a>2nd lev - 2</a></li>
+                        <li><a>1nd lev - 3</a></li>
+                        <li><a>1nd lev - 4</a></li>
+                        <li><a>1nd lev - 5</a></li>
+                        <li><a>1nd lev - 6</a></li>
+                        <li><a>1nd lev - 7</a></li>
+                        <li><a>1nd lev - 8</a></li>
+                        <li><a>1nd lev - 9</a></li>
+                        <li><a>1nd lev - 10</a></li>
+                        <li><a>1nd lev - 11</a></li>
+                        <li>
                             <ul>
-                                <li><a>3rd lev - 1</a></li>
-                                <li><a>3rd lev - 2</a></li>
-                                <li><a>3rd lev - 3</a></li>
+                                <li><a href="#" data-action-type="openMenu">[show sub]</a>
+                                    <ul selected="false" orgentation="right">
+                                            <li><a>1nd lev - 1</a></li>
+                                            <li><a>2nd lev - 2</a></li>
+                                            <li><a>1nd lev - 3</a></li>
+                                            <li><a>1nd lev - 4</a></li>
+                                            <li><a>1nd lev - 5</a></li>
+                                            <li><a>1nd lev - 6</a></li>
+                                            <li><a>1nd lev - 7</a></li>
+                                            <li><a>1nd lev - 8</a></li>
+                                            <li><a>1nd lev - 9</a></li>
+                                            <li><a>1nd lev - 10</a></li>
+                                            <li><a>1nd lev - 11</a></li>
+                                            <li><a>1nd lev - 12</a></li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </x-dropdown>
-                    </li>
-                    <li><a>2nd lev - 2</a></li>
-                    <li><a>2nd lev - 3</a></li>
+                        </li>
                 </ul>
-            </x-dropdown>
-        </li>
-        <li><a>toplev - 4</a></li>
-    </ul>
-</x-dropdown>
-
-<x-dropdown id="x-dropdown1">
-    <a href="#" data-action-type="openMenu">[show menu]</a>
-    <ul>
-        <li><a>toplev - 1</a></li>
-        <li><a>toplev - 2</a></li>
-        <li>
-            <x-dropdown id="x-dropdown-sub-11" data-orgentation="right">
-                <a href="#" data-action-type="openMenu">[submenu - 1]</a>
-                <ul>
-                    <li><a>2nd lev - 1</a></li>
-                    <li><a>2nd lev - 2</a></li>
-                    <li><a>2nd lev - 3</a></li>
-                </ul>
-            </x-dropdown>
-        </li>
-        <li>
-            <x-dropdown id="x-dropdown-sub-21" data-orgentation="right">
-                <a href="#" data-action-type="openMenu">[submenu - 2]</a>
-                <ul>
-                    <li><a>2nd lev - 1</a></li>
-                    <li>
-                        <x-dropdown id="x-dropdown-sub-31" data-orgentation="right">
-                            <a href="#" data-action-type="openMenu">[submenu - 3]</a>
-                            <ul>
-                                <li><a>3rd lev - 1</a></li>
-                                <li><a>3rd lev - 2</a></li>
-                                <li><a>3rd lev - 3</a></li>
-                            </ul>
-                        </x-dropdown>
-                    </li>
-                    <li><a>2nd lev - 2</a></li>
-                    <li><a>2nd lev - 3</a></li>
-                </ul>
-            </x-dropdown>
-        </li>
-        <li><a>toplev - 4</a></li>
-    </ul>
-</x-dropdown>
+            </li>
+        </ul>
+    </x-dropdown>
 </body>
-
-<script type="text/javascript">
-    document.addEventListener('click', function(e){
-
-        var action = e.target,
-            parent = action.parentNode,
-            actionType = action.getAttribute('data-action-type');
-
-        if (actionType) {
-            var tag = action.parentElement.id,
-                demo = document.getElementById(tag);
-            switch(actionType) {
-                case 'openMenu':
-                    demo.xtag.openMenu();
-                    break;
-                case 'closeMenu':
-                    demo.xtag.closeMenu();
-                    break;
-                case 'closeMenuBody':
-                    demo = document.getElementsByTagName('x-dropdown')[0];
-                    demo.xtag.closeMenuBody();
-            }
-        }
-});
-</script>
 </html>
