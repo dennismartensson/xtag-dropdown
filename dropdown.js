@@ -2,6 +2,7 @@ xtag.register('x-dropdown', {
     onCreate: function() {
         
     },
+    
     onInsert: function() {
 
         var width = this.getAttribute('data-width');
@@ -18,6 +19,7 @@ xtag.register('x-dropdown', {
         this.getElementsByTagName('ul')[0].style.maxWidth = width + 'px';
 
     },
+
     events: {
         'tap:delegate(a)': function(e) {
             actionType = this.getAttribute('data-action-type');
@@ -47,9 +49,7 @@ xtag.register('x-dropdown', {
     },
 
     getters: {
-        'togglers': function() {
-            // return all toggler children
-        }
+        
     },
     setters: {
         // Add DOM object setters
@@ -69,7 +69,6 @@ xtag.register('x-dropdown', {
             link.setAttribute("data-action-type", "closeMenu");
         },
 
-
         closeMenu: function(link) {
 
             var menu = link.parentNode.getElementsByTagName('ul')[0];
@@ -78,7 +77,6 @@ xtag.register('x-dropdown', {
             link.setAttribute("data-action-type", "openMenu");
 
         },
-
 
         closeMenuBody: function() {
             var submenus = this.parentNode.parentNode.getElementsByTagName('x-dropdown');
@@ -91,6 +89,5 @@ xtag.register('x-dropdown', {
                 header.setAttribute("data-action-type", "openMenu");
             }
         }
-
     }
 });
