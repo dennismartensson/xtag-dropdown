@@ -28,6 +28,6 @@ Example:
     </ul>
 </x-dropdown>
 
-<code>
+>
 
 
