@@ -13,22 +13,20 @@ xtag.register('x-dropdown', {
 
         this.getElementsByTagName('ul')[0].style.maxWidth = width + 'px';
 
-        //set orgentation and distance
+        //set orientation and distance
         xtag.query(document, 'ul').forEach(function(element) {
-            var orgen = element.getAttribute('orgentation');
+            var orien = element.getAttribute('orientation');
             var distance = element.getAttribute('distance');
 
-            if (orgen == 'right') {
+            if (orien == 'right') {
                 element.style.paddingLeft = distance + 'px';
-            } else if (orgen == 'left') {
+            } else if (orien == 'left') {
                 element.style.paddingRight = distance + 'px';
-            } else if (orgen == 'top') {
+            } else if (orien == 'top') {
                 element.style.paddingBottom = distance + 'px';
             }
         });
-    },
 
-    onInsert: function() {
         //add click lisener to body for closing menu if you click on any thing else then the menu
         document.body.setAttribute('data-action-type', 'closeMenuAll');
 
@@ -49,6 +47,10 @@ xtag.register('x-dropdown', {
 
             }
         });
+    },
+
+    onInsert: function() {
+
     },
 
     events: {
